@@ -5,7 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using TPLOCAL1.Models;
 
-
+//L'énoncé du tp et le logo hn sont livrés dans le répertoire /ressources de la solution
+//---------------------------------------------------------------------------------------
 //Attention, le modèle MVC est un modèle dit de convention plutot que configuration, 
 //Le controller doit donc obligatoirement se nommer avec "Controller" à la fin!!!
 namespace TPLOCAL1.Controllers
