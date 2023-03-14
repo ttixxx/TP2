@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+
 using TPLOCAL1.Models;
 
 //L'énoncé du tp et le logo hn sont livrés dans le répertoire /ressources de la solution
@@ -45,7 +42,8 @@ namespace TPLOCAL1.Controllers
             //reste à faire : tester de si les champs du modele sont bien remplis
             //s'ils ne sont pas bien remplis, afficher une erreur et rester sur la page formulaire
             //sinon, appeler la page ValidationFormulaire avec les données remplies par l'utilisateur
-                
+            return null;
+
         }
     }
 }
