@@ -2,46 +2,46 @@
 
 using TPLOCAL1.Models;
 
-//L'énoncé du tp et le logo hn sont livrés dans le répertoire /ressources de la solution
+//Subject is find at the root of the project and the logo in the wwwroot/ressources folders of the solution
 //--------------------------------------------------------------------------------------
-//Attention, le modèle MVC est un modèle dit de convention plutot que configuration, 
-//Le controller doit donc obligatoirement se nommer avec "Controller" à la fin!!!
+//Careful, the MVC model is a so-called convention model instead of configuration,
+//The controller must imperatively be name with "Controller" at the end !!!
 namespace TPLOCAL1.Controllers
 {
     public class HomeController : Controller
     {
-        // méthode appelée par la routeur "naturellement"
+        //methode "naturally" call by router
         public ActionResult Index(string id)
         {
             if (string.IsNullOrWhiteSpace(id))
-                //renvoie vers la vue Index (voir routage dans RouteConfig.cs)
+                //retourn to the Index view (see routing in Program.cs)
                 return View();
             else
             {
-                //en fonction du paramètre id, on appelle les différentes pages
+                //Call different pages, according to the id pass as parameter
                 switch (id)
                 {
-                    case "ListeAvis":
-                        //reste à faire : coder la lecture du fichier xml fourni
+                    case "OpinionList":
+                        //TODO : code reading of the xml files provide
                         return View(id);
-                    case "Formulaire":
-                        //reste à faire : appeler la vue Formulaire avec le modèle de données vide
+                    case "Form":
+                        //TODO : call the Form view with data model empty
                         return View(id);
                     default:
-                        //renvoie vers Index (voir routage dans RouteConfig.cs)
+                        //retourn to the Index view (see routing in Program.cs)
                         return View();
                 }
             }
         }
 
 
-        //méthode pour envoyer les données du formulaire vers la page de validation
+        //methode to send datas from form to validation page
         [HttpPost]
         public ActionResult ValidationFormulaire(/*model*/)
         {
-            //reste à faire : tester de si les champs du modele sont bien remplis
-            //s'ils ne sont pas bien remplis, afficher une erreur et rester sur la page formulaire
-            //sinon, appeler la page ValidationFormulaire avec les données remplies par l'utilisateur
+            //TODO : test if model's fields are set
+            //if not, display an error message and stay on the form page
+            //else, call ValidationForm with the datas set by the user
             return null;
 
         }

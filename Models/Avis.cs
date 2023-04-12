@@ -6,76 +6,75 @@ using System.Web;
 using System.Xml;
 
 
-//Ce fichier n'est pas à modifier!!!
+//This file is not to be modified
 namespace TPLOCAL1.Models
 {
     public class ListeAvis
     {
         /// <summary>
-        /// Fonction permettant de récupérer la liste des avis contenus dans un fichier XML
+        /// Function that alow to recover the opinions list inside an xml file
         /// </summary>
-        /// <param name="fichier">chemin du fichier</param>
-        public List<Avis> GetAvis(string fichier)
+        /// <param name="file">file path</param>
+        public List<Opinion> GetAvis(string file)
         {
-            // On instancie la liste vide
-            List<Avis> listeAvis = new List<Avis>();
+            // instantiating empty list
+            List<Opinion> opinionList = new List<Opinion>();
 
-            // Création d'un objet de type XMLDocument permettant de récupérer les données du fichier physique
+            // Creation of an XMLDocument object that alow to recover datas from the file
             XmlDocument xmlDoc = new XmlDocument();
-            // Lecture du fichier à partir d'un objet StreamReader
-            StreamReader streamDoc = new StreamReader(fichier);
+            // Reading of the file thank to a StreamReader file
+            StreamReader streamDoc = new StreamReader(file);
             string dataXml = streamDoc.ReadToEnd();
-            // Chargement des données dans le XmlDocument
+            // Loading data in the XmlDocument
             xmlDoc.LoadXml(dataXml);
 
-            // Récupération des noeuds pour les passer en objet Avis puis ajout à la liste 'listeAvis'
-            // On boucle sur chaque noeud de type XmlNode ayant pour chemin "root/row" (cf structure du fichier xml)
-            // La méthode SelectNodes permet de récupérer tous les noeuds ayant le chemin indiqué
+            // Retrieve the nodes, convert them to the "Avis" object, and add them to the "listeAvis" list.
+            // Loop through each XmlNode node with the path "root/row" (see xml file structure)
+            // The SelectNodes method retrieves all nodes with the specified path.
             foreach (XmlNode node in xmlDoc.SelectNodes("root/row"))
             {
-                // Récupération des données dans les noeuds fils
-                string nom = node["Nom"].InnerText;
-                string prenom = node["Prenom"].InnerText;
-                string avisdonne = node["Avis"].InnerText;
+                // Retrieving data from child nodes.
+                string LastName = node["LastName"].InnerText;
+                string FirstName = node["FirstName"].InnerText;
+                string OpinionGiven = node["OpinionGiven"].InnerText;
 
-                // Création de l'objet Avis à ajouter à la liste des résultats
-                Avis avis = new Avis
+                // Creating the "Opinion" object to add to the results list.
+                Opinion opinion = new Opinion
                 {
-                    Nom = nom,
-                    Prenom = prenom,
-                    AvisDonne = avisdonne
+                    LastName = LastName,
+                    FirstName = FirstName,
+                    OpinionGiven = OpinionGiven
                 };
 
-                // Ajout de l'objet à la liste
-                listeAvis.Add(avis);
+                // Adding the object to the list.
+                opinionList.Add(opinion);
             }
 
-            // On retourne la liste formée par le traitement à la méthode appelante
-            return listeAvis;
+            // Returning the list formed by processing to the calling method.
+            return opinionList;
         }
     }
 
     // .: Info :.
-    // Cette classe peut être extraite dans une nouvelle page C# mais dans le cadre du TP elle peut être laissé dans la même page
-    // Il faut éviter le plus possible d’avoir une même page avec plusieurs classes à l'intérieur.
-    // Même si cela fonctionne, cela peut compliquer la lisibilité du code et, à terme, la maintenance
+    // This class can be extracted to a new C# page, but for the sake of this exercise, it can be left in the same page.
+    // It's best to avoid having multiple classes inside the same page as it can complicate code readability and maintenance in the long run.
     /// <summary>
-    /// Objet regroupant les données liés aux avis
-    /// \nPeut être modifiée
+    /// Object that groups data related to reviews
+    /// \nCan be modified
     /// </summary>
-    public class Avis
+    public class Opinion
     {
         /// <summary>
-        /// Nom de famille
+        /// Last name
         /// </summary>
-        public string Nom { get; set; }
+        public string LastName { get; set; }
         /// <summary>
-        /// Prénom
+        /// First name
         /// </summary>
-        public string Prenom { get; set; }
+        public string FirstName { get; set; }
         /// <summary>
-        /// Avis donné (Valeurs possibles : O ou N)
+        /// Review given (Possible values: O or N)
         /// </summary>
-        public string AvisDonne { get; set; }
+        public string OpinionGiven { get; set; }
     }
 }
