@@ -9,7 +9,7 @@ using System.Xml;
 //This file is not to be modified
 namespace TPLOCAL1.Models
 {
-    public class ListeAvis
+    public class OpinionList
     {
         /// <summary>
         /// Function that alow to recover the opinions list inside an xml file
@@ -28,7 +28,7 @@ namespace TPLOCAL1.Models
             // Loading data in the XmlDocument
             xmlDoc.LoadXml(dataXml);
 
-            // Retrieve the nodes, convert them to the "Avis" object, and add them to the "listeAvis" list.
+            // Retrieve the nodes, convert them to the "Avis" object, and add them to the "OpinionList" list.
             // Loop through each XmlNode node with the path "root/row" (see xml file structure)
             // The SelectNodes method retrieves all nodes with the specified path.
             foreach (XmlNode node in xmlDoc.SelectNodes("root/row"))
